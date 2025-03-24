@@ -14,30 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace TencentCloud\Dbbrain\V20191016\Models;
+namespace TencentCloud\Dbbrain\V20210527\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeMailProfile返回参数结构体
+ * DescribeRedisCommandCostStatistics返回参数结构体
  *
- * @method array getProfileList() 获取邮件配置详情。
- * @method void setProfileList(array $ProfileList) 设置邮件配置详情。
- * @method integer getTotalCount() 获取邮件模板总数。
- * @method void setTotalCount(integer $TotalCount) 设置邮件模板总数。
+ * @method array getCmdCostGroups() 获取redis延迟分布区间
+ * @method void setCmdCostGroups(array $CmdCostGroups) 设置redis延迟分布区间
  * @method string getRequestId() 获取唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeMailProfileResponse extends AbstractModel
+class DescribeRedisCommandCostStatisticsResponse extends AbstractModel
 {
     /**
-     * @var array 邮件配置详情。
+     * @var array redis延迟分布区间
      */
-    public $ProfileList;
-
-    /**
-     * @var integer 邮件模板总数。
-     */
-    public $TotalCount;
+    public $CmdCostGroups;
 
     /**
      * @var string 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -45,8 +38,7 @@ class DescribeMailProfileResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $ProfileList 邮件配置详情。
-     * @param integer $TotalCount 邮件模板总数。
+     * @param array $CmdCostGroups redis延迟分布区间
      * @param string $RequestId 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -62,17 +54,13 @@ class DescribeMailProfileResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("ProfileList",$param) and $param["ProfileList"] !== null) {
-            $this->ProfileList = [];
-            foreach ($param["ProfileList"] as $key => $value){
-                $obj = new UserProfile();
+        if (array_key_exists("CmdCostGroups",$param) and $param["CmdCostGroups"] !== null) {
+            $this->CmdCostGroups = [];
+            foreach ($param["CmdCostGroups"] as $key => $value){
+                $obj = new CmdCostGroup();
                 $obj->deserialize($value);
-                array_push($this->ProfileList, $obj);
+                array_push($this->CmdCostGroups, $obj);
             }
-        }
-
-        if (array_key_exists("TotalCount",$param) and $param["TotalCount"] !== null) {
-            $this->TotalCount = $param["TotalCount"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
