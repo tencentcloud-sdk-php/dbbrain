@@ -18,26 +18,19 @@ namespace TencentCloud\Dbbrain\V20210527\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeDBDiagReportTasks返回参数结构体
+ * DescribeDBInstances返回参数结构体
  *
- * @method integer getTotalCount() 获取<p>任务总数目。</p>
- * @method void setTotalCount(integer $TotalCount) 设置<p>任务总数目。</p>
- * @method array getTasks() 获取<p>任务列表。</p>
- * @method void setTasks(array $Tasks) 设置<p>任务列表。</p>
+ * @method array getItems() 获取<p>实例列表。</p>
+ * @method void setItems(array $Items) 设置<p>实例列表。</p>
  * @method string getRequestId() 获取唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeDBDiagReportTasksResponse extends AbstractModel
+class DescribeDBInstancesResponse extends AbstractModel
 {
     /**
-     * @var integer <p>任务总数目。</p>
+     * @var array <p>实例列表。</p>
      */
-    public $TotalCount;
-
-    /**
-     * @var array <p>任务列表。</p>
-     */
-    public $Tasks;
+    public $Items;
 
     /**
      * @var string 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -45,8 +38,7 @@ class DescribeDBDiagReportTasksResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param integer $TotalCount <p>任务总数目。</p>
-     * @param array $Tasks <p>任务列表。</p>
+     * @param array $Items <p>实例列表。</p>
      * @param string $RequestId 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -62,16 +54,12 @@ class DescribeDBDiagReportTasksResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("TotalCount",$param) and $param["TotalCount"] !== null) {
-            $this->TotalCount = $param["TotalCount"];
-        }
-
-        if (array_key_exists("Tasks",$param) and $param["Tasks"] !== null) {
-            $this->Tasks = [];
-            foreach ($param["Tasks"] as $key => $value){
-                $obj = new HealthReportTask();
+        if (array_key_exists("Items",$param) and $param["Items"] !== null) {
+            $this->Items = [];
+            foreach ($param["Items"] as $key => $value){
+                $obj = new InstanceItem();
                 $obj->deserialize($value);
-                array_push($this->Tasks, $obj);
+                array_push($this->Items, $obj);
             }
         }
 

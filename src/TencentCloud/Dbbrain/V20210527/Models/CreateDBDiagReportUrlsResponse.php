@@ -18,26 +18,32 @@ namespace TencentCloud\Dbbrain\V20210527\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeDBDiagReportTasks返回参数结构体
+ * CreateDBDiagReportUrls返回参数结构体
  *
- * @method integer getTotalCount() 获取<p>任务总数目。</p>
- * @method void setTotalCount(integer $TotalCount) 设置<p>任务总数目。</p>
- * @method array getTasks() 获取<p>任务列表。</p>
- * @method void setTasks(array $Tasks) 设置<p>任务列表。</p>
+ * @method integer getTotalCount() 获取<p>URL条目总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setTotalCount(integer $TotalCount) 设置<p>URL条目总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getItems() 获取<p>报告URL信息列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setItems(array $Items) 设置<p>报告URL信息列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
  * @method string getRequestId() 获取唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeDBDiagReportTasksResponse extends AbstractModel
+class CreateDBDiagReportUrlsResponse extends AbstractModel
 {
     /**
-     * @var integer <p>任务总数目。</p>
+     * @var integer <p>URL条目总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
      */
     public $TotalCount;
 
     /**
-     * @var array <p>任务列表。</p>
+     * @var array <p>报告URL信息列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $Tasks;
+    public $Items;
 
     /**
      * @var string 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -45,8 +51,10 @@ class DescribeDBDiagReportTasksResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param integer $TotalCount <p>任务总数目。</p>
-     * @param array $Tasks <p>任务列表。</p>
+     * @param integer $TotalCount <p>URL条目总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $Items <p>报告URL信息列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
      * @param string $RequestId 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -66,12 +74,12 @@ class DescribeDBDiagReportTasksResponse extends AbstractModel
             $this->TotalCount = $param["TotalCount"];
         }
 
-        if (array_key_exists("Tasks",$param) and $param["Tasks"] !== null) {
-            $this->Tasks = [];
-            foreach ($param["Tasks"] as $key => $value){
-                $obj = new HealthReportTask();
+        if (array_key_exists("Items",$param) and $param["Items"] !== null) {
+            $this->Items = [];
+            foreach ($param["Items"] as $key => $value){
+                $obj = new DiagReportUrlItem();
                 $obj->deserialize($value);
-                array_push($this->Tasks, $obj);
+                array_push($this->Items, $obj);
             }
         }
 
